@@ -1,0 +1,76 @@
+﻿
+Go语言里面的包
+包是各种类型和函数的集合。在包中，如果标示符(类型名称，函数名称，方法名称)的首字母是大写，那这些标示符是可以被导出的，
+也就是说可以在包以外直接使用。前面我们也提到了$GOPATH环境变量（指向一个或多个目录），以及其子目录src目录的，当我们使用import关键字导入包的时候，Go 语言会在$GOPATH，GOROOT目录中搜索包。
+我们创建的自定义的包最好放在$GOPATH的src目录下，如果这个包只属于某个应用程序，可以直接放在应用程序源代码的子目录下，但如果我们希望这个包可以被其他的应用程序共享，那就应该放在$GOPATH的src目录下，
+每个包单独放在一个目录里，如果两个不同的包放在同一目录下，会出现名字冲突的编译错误
+
+3：数组是按值传递的，而切片是引用类型。
+(len()可以用来查看数组或者slice的长度，cap()可以用来查看数组或者slice的容量)
+
+
+1：
+resultOfType := Type(expression)
+在Go语言中可以通过type关键字声明类型，如type StringsSlice []string 将[]string（string 类型的切片）声明为StringSlice类型。
+
+2：类型断言 ？？？？？？？？？？？？？
+interface{}类型就像C++的多态一样
+一般情况下只有我们希望表达式是某种特定类型的值时才使用类型断言
+
+interface{} 类型表示一个空接口。既然 interface{} 可以用于表示任意类型，
+那有的时候我们需要将 interface{} 类型转换为我们需要的类型，这个操作称为类型断言。
+
+
+接口是完全抽象的，不能实例化。interface{}类型表示一个空接口。任何类型都满足空接口。
+
+resultOfType, boolean := expression.(Type) // 安全的类型断言
+resultOfType := expression.(Type) // 非安全的类型断言，失败时程序会产生异常
+
+6：错误的处理
+1:Go语言引入了一个错误处理的标准模式，也就是error接口，定义如下
+type error interface {
+    Error() string
+}
+2：调用如下
+func foo(param int)(ret int, err error)
+{
+  ...  
+}
+n, err := foo(0)
+if err != nil {
+    //  错误处理
+} else {
+    // 使用返回值n
+}
+defer语句。(是在return之后完成的)
+当函数执行到最后时，这些 defer 语句会按照逆序执行（即最后一个defer语句将最先执行），最后该函数返回
+
+panic()和recover()
+panic()函数用于抛出异常，recover()函数用于捕获异常.
+原型如下
+func panic(interface{})
+func recover() interface{}
+
+3：Go语言的Map
+Map是一种无序的键值对的集合。Map 最重要的一点是通过 key 来快速检索数据，key 类似于索引，指向数据的值
+Map的声明
+var map_variable map[key_data_type]value_data_type
+map_variable := make(map[key_data_type]value_data_type)
+
+map类型的创建有两种方式：
+第一种方式：就是使用make，它不需要赋初值
+第二种方式就是直接使用map的方式。但是必须要赋予一个初值
+
+使用delete去删除。方式就是delete(创建的那个map，删除的key值)
+
+函数的多返回值和变参函数
+变参函数如下：
+func sum(nums ...int) {
+    fmt.Print(nums, " ")
+    total := 0
+    for _, num := range nums {
+        total += num
+    }
+    fmt.Println(total)
+}
+

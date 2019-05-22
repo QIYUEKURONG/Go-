@@ -95,6 +95,8 @@ func append(s []T, x ...T) []T
 copy函数将源切片的元素复制到目的切片.它返回复制元素的数目.
 函数签名：
 func copy(dst, src []T) int
+增加切片的方式如下：
+s = s[:cap(s)]
 
 ## map
 

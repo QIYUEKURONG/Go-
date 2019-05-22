@@ -1,0 +1,1 @@
+[const](golang/const.md)

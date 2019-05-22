@@ -1,0 +1,6 @@
+﻿go语言切片
+1：https://blog.go-zh.org/go-slices-usage-and-internals 
+2：练习Go语言的好的国外的网址
+   https://www.tutorialspoint.com/go/
+   https://tour.golang.org
+https://github.com/ffhelicopter/Go42/
