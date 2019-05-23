@@ -25,6 +25,10 @@ func Join(s [][]byte,sep []byte) []byte
 s:=[][]byte{[]byte("wo"),[]byte("ai"),[]byte("ni")}
 bytes.Join(s,[]byte(","))
 6:
+func Fields(s []byte) [][]byte //就是按空格进行了分割
+ bytes.Fields([]byte("  foo bar  baz   ")
+ ["foo" "bar" "baz"]
+7:
 func NewBuffer(buf []byte) *Buffer
 使用
 这个函数就是建立一个读写缓冲区。
